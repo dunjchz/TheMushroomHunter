@@ -16,14 +16,18 @@ public class FrogController : MonoBehaviour
 
     private bool canBounce = false;
 
-    // Start is called before the first frame update
+    public GameObject panel;
+
+    // Specific object tag to check collision
+    public string specificObjectTag = "Flower"; // Replace with your specific object's tag
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Renderer = GetComponent<SpriteRenderer>();
+        panel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (jumpCoroutine is null)
@@ -36,7 +40,6 @@ public class FrogController : MonoBehaviour
                 Renderer.flipX = direction.x < 0;
                 jumpCoroutine = StartCoroutine(AnimateJump(direction, jumpDuration, jumpDistance, jumpAnimationCurve));
                 Controller.SetBool("IsMoving", true);
-
             }
             else
             {
@@ -139,10 +142,12 @@ public class FrogController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var lockScript = other.gameObject.GetComponent<EggSceneController>();
-        if (lockScript)
+        // Check if the collider belongs to the specific object
+        if (other.CompareTag(specificObjectTag))
         {
-            lockScript.ActivatePanel();
+            // Show the panel and pause the game
+            panel.SetActive(true);
+            Time.timeScale = 0f; // Pause the game
         }
 
         var dialogScript = other.gameObject.GetComponent<DialogObject>();
@@ -150,11 +155,16 @@ public class FrogController : MonoBehaviour
         {
             dialogScript.StartDialog();
         }
-
-        var pickupScript = other.gameObject.GetComponent<Pickup>();
-        if (pickupScript)
-        {
-            pickupScript.TriggerPickup();
-        }
     }
+
+    //void OnTriggerExit2D(Collider2D other)
+    //{
+    //    // Check if the collider belongs to the specific object
+    //    if (other.CompareTag(specificObjectTag))
+    //    {
+    //        // Hide the panel and resume the game
+    //        panel.SetActive(false);
+    //        Time.timeScale = 1f; // Resume the game
+    //    }
+    //}
 }
