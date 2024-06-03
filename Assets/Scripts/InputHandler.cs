@@ -14,6 +14,8 @@ public class InputHandler : MonoBehaviour
     // The correct answer
     private string correctAnswer = "chanterelles";
 
+    public TMP_Text text;
+
     void Start()
     {
         // Ensure the panel is active at the start
@@ -39,6 +41,7 @@ public class InputHandler : MonoBehaviour
         {
             // If the input is incorrect, display an error message (optional)
             Debug.Log("Incorrect answer. Please try again.");
+            text.text = "Incorrect answer. Please try again.";
         }
     }
 

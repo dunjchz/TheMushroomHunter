@@ -156,15 +156,4 @@ public class FrogController : MonoBehaviour
             dialogScript.StartDialog();
         }
     }
-
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    // Check if the collider belongs to the specific object
-    //    if (other.CompareTag(specificObjectTag))
-    //    {
-    //        // Hide the panel and resume the game
-    //        panel.SetActive(false);
-    //        Time.timeScale = 1f; // Resume the game
-    //    }
-    //}
 }
