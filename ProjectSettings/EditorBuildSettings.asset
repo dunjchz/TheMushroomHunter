@@ -9,15 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartingScreenScene.unity
     guid: 846974099ddac48adbfb07f09cb8f65f
   - enabled: 1
-    path: Assets/Scenes/PondScene.unity
-    guid: d191ee02b090e40b9bfeee97276aefc0
-  - enabled: 1
-    path: Assets/Scenes/EggScene.unity
-    guid: a4d727d11358c4d5bb97e7d8576f5e95
-  - enabled: 1
     path: Assets/Scenes/MazeScene.unity
     guid: eff636236f8394fa88547991a90a2b65
   - enabled: 1
-    path: Assets/Scenes/PancakeMixScene.unity
-    guid: 2e32a56cbca454785934a5ba915d7bb4
+    path: Assets/Scenes/Ending scene.unity
+    guid: 3b5bc7166f8324423808a864ac532291
   m_configObjects: {}
